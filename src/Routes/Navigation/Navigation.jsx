@@ -1,11 +1,17 @@
 import React from 'react';
-import {Fragment} from 'react';
+import {Fragment,useContext} from 'react';
 import {Outlet,Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../Assets/crown.svg'
 import './Navigation.scss'
+import {UserContext} from '../../Contexts/User.context'
+import {signOutUser} from '../../Utils/Firebase/firebase'
 
 
 const Navigation = () => {
+
+	const {currentUser,setCurrentUser} = useContext(UserContext);
+
+
 
 
 
@@ -23,11 +29,16 @@ const Navigation = () => {
 					
 				    <div className ='nav-links-container'>
 					    <Link className = 'nav-link' to = '/shop'>
-					    Shop
+					    SHOP
 					    </Link>
-					       <Link className = 'nav-link' to = '/signin'>
-					    Sign In
-					    </Link>
+
+					    {
+					    	currentUser? (
+					    		<span className='nav-link' onClick ={signOutUser}>SIGNOUT</span>
+					    		)
+					    	: (<Link className = 'nav-link' to = '/auth'>SIGN IN</Link>)
+					    }
+					    
 				    </div>
 			    </div>
 

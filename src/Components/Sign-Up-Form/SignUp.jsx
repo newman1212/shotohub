@@ -1,9 +1,10 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState,useContext} from 'react';
 import { createAuthUserWithEmailAndPassword,createUserDocumentFromAuth} from '../../Utils/Firebase/firebase';
 import FormInput from '../Form-Input/FormInput'
 import './signUp.scss'
 import Button from '../Button/button'
+// import {UserContext} from '../../Contexts/User.context'
 
 
 const defaultFormFields = {
@@ -20,6 +21,9 @@ const SignUp = () => {
 
 	const [formFields,setFormFields] = useState({defaultFormFields});
 	const {displayName,email,password,confirmPassword} = formFields;
+
+
+	// const {setCurrentUser} = useContext(UserContext) 
 
 	console.log(formFields)
 
@@ -39,8 +43,10 @@ const handleSubmit = async(event) => {
 		await createUserDocumentFromAuth(user,{displayName});
 		resetFormFields();
 
+		// setCurrentUser(user);
+
 	}
-	catch(error){ if(error.code=='auth/email-already-in-use'){alert('email already exist')}
+	catch(error){ if(error.code==='auth/email-already-in-use'){alert('email already exist')}
 	console.log('error creating user', error)}
 }
 
@@ -67,7 +73,7 @@ return(
 
 			<FormInput required type='password' onChange={handleChange} name ='confirmPassword' value ={confirmPassword} label="re-enter password"/>
 
-			<Button  type="submit">Sign Up</Button>
+			<Button buttonType='inverted' type="submit">Sign Up</Button>
 
 
 		</form>
