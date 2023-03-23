@@ -5,7 +5,9 @@ import Home from './Routes/Home/Home'
 import Navigation from './Routes/Navigation/Navigation'
 import Authentication from './Routes/Authentication/authentication'
 import {Routes,Route} from 'react-router-dom'
-import Shop from './Components/Shop/Shop'
+import Shop from './Routes/Shop/shop'
+// import Shop from './Components/Shop/Shop'
+// import Shop from './Shop/shop'
 
 
 

@@ -23,7 +23,7 @@ const SignIn = () => {
 
 const signInWithGoogle = async() => {
 
-		const {user} = await signInWithGooglePopup();
+		const user = await signInWithGooglePopup();
 		await createUserDocumentFromAuth(user)
 	}
 
