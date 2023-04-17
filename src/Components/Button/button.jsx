@@ -12,14 +12,14 @@ export const BUTTON_TYPES_CLASSES ={
 }
 
 
-const getButton = (buttonType=BUTTON_TYPES_CLASSES.base) =>({
+const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>({
 
 
 	[BUTTON_TYPES_CLASSES.base] : BaseButton,
 	[BUTTON_TYPES_CLASSES.inverted] : InvertedButton,
 	[BUTTON_TYPES_CLASSES.google] : GoogleButton,
 
-} [buttonType]
+}[buttonType]
 
 )
 

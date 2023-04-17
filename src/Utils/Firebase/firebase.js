@@ -35,7 +35,7 @@ googleProvider.setCustomParameters({
 })
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 
 const db = getFirestore()
 
@@ -136,11 +136,8 @@ export const signInAuthUserWithEmailAndPassword = async(email,password) => {
   }
 
 
-  export const signOutUser = async() => {
-   const res = await signOut(auth);
-
-   
-  }
+ 
+  export const signOutUser = async () => await signOut(auth);
 
 
   export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth,callback)
