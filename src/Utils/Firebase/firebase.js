@@ -53,7 +53,7 @@ const db = getFirestore()
 
     await batch.commit();
 
-    console.log('done')
+
 
 
 }
@@ -63,27 +63,13 @@ export const getCategoriesAndDocuments = async () => {
 
   const collectionRef = collection(db,'categories');
 
-  // console.log(collectionRef,'collectionRef')
-
   const q = query(collectionRef);
-  // console.log(q,'query');
+
 
   const querySnapshot = await getDocs(q);
 
-  // console.log(querySnapshot)
 
-  const categoryMap =  querySnapshot.docs.reduce((acc,docSnapshot) => {
-
-    // console.log(docSnapshot.data())
-
-    const {title,items} = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-
-    return acc;
-
-  },{})
-
-  return categoryMap;
+  return querySnapshot.docs.map(docSnapshot=>docSnapshot.data());
 
 
 }
@@ -91,11 +77,8 @@ export const getCategoriesAndDocuments = async () => {
 
 export const createUserDocumentFromAuth = async(userAuth,additionalInfo) => {
   const userDocRef = doc(db,'users',userAuth.uid)
-  console.log(userDocRef,'userDocRef')
+  
   const userSnapShot = await getDoc(userDocRef)
-  console.log(userSnapShot,'userSnapShot')
-  console.log(userSnapShot.exists())
-
 
 if (!userSnapShot.exists()){
   const {displayName,email} = userAuth;

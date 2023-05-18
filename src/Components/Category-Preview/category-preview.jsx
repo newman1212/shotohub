@@ -1,10 +1,10 @@
 import './category-preview.scss';
+// import {useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import ProductCard from '../Product-Card/product-card'
 
 
 const CategoryPreview = ({title,product}) =>{
-
 
 
 

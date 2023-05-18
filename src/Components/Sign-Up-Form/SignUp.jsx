@@ -19,13 +19,9 @@ confirmPassword :''
 
 const SignUp = () => {
 
-	const [formFields,setFormFields] = useState({defaultFormFields});
+	const [formFields,setFormFields] = useState(defaultFormFields);
 	const {displayName,email,password,confirmPassword} = formFields;
 
-
-	// const {setCurrentUser} = useContext(UserContext) 
-
-	// console.log(formFields)
 
 	const resetFormFields =()=>{
 		setFormFields(defaultFormFields)

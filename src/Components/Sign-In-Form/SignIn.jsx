@@ -18,7 +18,7 @@ password :'',
 const SignIn = () => {
 
 
-	const [formFields,setFormFields] = useState({defaultFormFields});
+	const [formFields,setFormFields] = useState(defaultFormFields);
 	const {email,password} = formFields;
 
 
@@ -26,7 +26,6 @@ const SignIn = () => {
 	  const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-
 
 
 
@@ -93,7 +92,9 @@ const SignIn = () => {
 const handleChange =(event) =>{
 
 	const {name,value} = event.target; 
-	setFormFields({...formFields,[name]:value})  
+	setFormFields({...formFields,[name]:value}) 
+
+	console.log(value) 
 
 
 }
