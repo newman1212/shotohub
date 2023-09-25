@@ -1,5 +1,5 @@
  import React from 'react';
-import '../../categories.scss';
+// import '../../categories.scss';
 import Directory from '../../Components/Directory/Directory';
 
 

@@ -2,10 +2,10 @@
 import {BackgroungImage,Body,DirectoryItemContainer} from './directory-item.styles'
 import {useNavigate} from 'react-router-dom';
 
-const DirectoryItem = ({categories}) => {
+const DirectoryItem = ({category}) => {
 
 
-    const {imageUrl,title,route} = categories
+    const {imageUrl,title,route} = category
 
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const DirectoryItem = ({categories}) => {
                         <p>Shop Now</p>
                       </Body>
                     
-          </DirectoryItemContainer> 
+        </DirectoryItemContainer> 
         
     )
 
