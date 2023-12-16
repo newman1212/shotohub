@@ -31,7 +31,7 @@ const Shop = () => {
 		 dispatch(fetchCategoriesStartAsync());
 
 
-	}, []);
+	}, [dispatch]);
 
 
 
