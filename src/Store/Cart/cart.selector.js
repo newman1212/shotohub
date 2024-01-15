@@ -1,22 +1,4 @@
-// import {createSelector} from 'reselect';
-
-
-// 	const updateCartItems =(newCartItems) => {
-
-// const newCartCount = newCartItems.reduce((total,cartItem) => total + cartItem.quantity,0)
-// const newCartTotal = newCartItems.reduce((total,cartItem) => total + (cartItem.quantity*cartItem.price),0)
-// dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEMS ,{cartItems:newCartItems,
-// 	cartCount:newCartCount,cartTotal:newCartTotal}));
-
-// 	console.log(createAction(),'createAction')	
-
-
-
-
-// original code....
-
-
-	import { createSelector } from 'reselect';
+import { createSelector } from 'reselect';
 
 const selectCartReducer = (state) => state.cart;
 

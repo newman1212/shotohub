@@ -1,60 +1,25 @@
-import {useContext,Fragment} from 'react';
+import {Fragment} from 'react';
 import {useSelector} from 'react-redux';
 import {
-  selectCategoryMap,
-  selectIsLoading,
+ 
+ selectCategoriesMap,
 } from '../../Store/Categories/category-selector';
 import CategoryPreview from '../../Components/Category-Preview/category-preview';
-import Spinner from '../../Components/Spinner/spinner';
+// import Spinner from '../../Components/Spinner/spinner';
 
 const CategoriesPreview = () => {
+  const categoriesMap = useSelector(selectCategoriesMap);
 
-
-	const categoriesMap = useSelector(selectCategoryMap);
-	const isLoading = useSelector(selectIsLoading);
-
-	console.log(categoriesMap,'categoriesMap')
-
-	
-
-
-
-
-
-	return(
-
-		<Fragment>
-
-	{isLoading ? (
-        <Spinner />
-      ) : (
-        Object.keys(categoriesMap).map((title) => {
-          const products = categoriesMap[title];
-          return (
-            <CategoryPreview key={title} title={title} product={products} />
-          );
-        })
-      )}
-
-		
-
-		</Fragment>
-
-
-		);
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return (
+    <Fragment>
+      {Object.keys(categoriesMap).map((title) => {
+        const products = categoriesMap[title];
+        return (
+          <CategoryPreview key={title} title={title} products={products} />
+        );
+      })}
+    </Fragment>
+  );
 };
 
-export default CategoriesPreview  ;
+export default CategoriesPreview;

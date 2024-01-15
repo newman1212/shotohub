@@ -1,70 +1,6 @@
-// import {CART_ACTION_TYPES} from './cart.types';
-// import {createAction} from '../../Utils/Reducer/reducer';
-
-
-// export const setIsCartOpen = (boolean) => createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN,boolean);
-
-
-
-
-
-
-// const clearCartItem = (cartItems,cartItemToClear) => {
-
-// 	const existingCartItem = cartItems.find((cartItem) => cartItem.id === cartItemToClear.id);
-
-     
-// 	if(existingCartItem) {
-// 		return cartItems.filter((cartItem)=> cartItem.id!==cartItemToClear.id)	
-// 	}
-	
-// 	}
-
-
-
-
-
-// const addItemToCart = (productToAdd) => {
-
-// 		const newCartItems = addCartItem(cartItems,productToAdd);
-// 		updateCartItems(newCartItems);
-
-// 	}
-
-
-// const removeItemFromCart = (cartItemToRemove) => {
-
-// 		const newCartItems = removeCartItem(cartItems,cartItemToRemove);
-// 		updateCartItems(newCartItems);
-
-
-
-// 	}
-
-
-// const clearItemFromCart = (cartItemToClear) => {
-
-// 		const newCartItems = clearCartItem(cartItems,cartItemToClear);
-// 		updateCartItems(newCartItems);
-
-
-
-// 	}
-
-
-
-
-
-
-
-
-
-
-
-// original code....
-
 import { createAction } from '../../Utils/Reducer/reducer';
 import { CART_ACTION_TYPES } from './cart.types';
+
 
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
@@ -122,7 +58,3 @@ export const clearItemFromCart = (cartItems, cartItemToClear) => {
 export const setIsCartOpen = (boolean) =>
   createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean);
 
-
-
-
-  // export const createAction = (type,payload) => ({type,payload})
