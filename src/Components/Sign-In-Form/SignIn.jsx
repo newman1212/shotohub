@@ -5,10 +5,22 @@ import FormInput from '../Form-Input/FormInput';
 import Button, { BUTTON_TYPES_CLASSES } from '../Button/button';
 
 import { SignInContainer, ButtonsContainer } from './SignIn.styles';
+
 import {
-  googleSignInStart,
-  emailSignInStart,
-} from '../../Store/User/user.action';
+  signInAuthUserWithEmailAndPassword,
+  signInWithGooglePopup,
+} from '../../Utils/Firebase/firebase';
+// import {
+//   googleSignInStart,
+//   emailSignInStart,
+// } from '../../Store/User/user.action';
+
+
+
+
+
+
+
 
 const defaultFormFields = {
   email: '',
@@ -16,7 +28,6 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
-  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -25,15 +36,14 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    dispatch(googleSignInStart());
-    console.log('dispatch fired!')
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      dispatch(emailSignInStart(email, password));
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       console.log('user sign in failed', error);
@@ -75,7 +85,7 @@ const SignInForm = () => {
             type='button'
             onClick={signInWithGoogle}
           >
-            Google Sign In
+            Sign In With Google
           </Button>
         </ButtonsContainer>
       </form>

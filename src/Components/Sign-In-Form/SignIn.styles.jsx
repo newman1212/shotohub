@@ -15,4 +15,3 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 
-
