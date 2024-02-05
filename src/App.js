@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ import { setCurrentUser } from './Store/User/user-reducer';
 
 
 const App = () => {
-  const dispatch = useDispatch();
+      const dispatch = useDispatch();
 
 
     useEffect(() => {
@@ -32,11 +32,15 @@ const App = () => {
 
       console.log(setCurrentUser(pickedUser));
       dispatch(setCurrentUser(pickedUser));
+
+
     });
 
 
 
     return unsubscribe;
+
+      }, [dispatch]);
 
   return (
     <Routes>
@@ -47,7 +51,12 @@ const App = () => {
         <Route path='checkout' element={<Checkout />} />
       </Route>
     </Routes>
-  );
+  )
+
+
 };
+
+
+
 
 export default App;

@@ -7,7 +7,7 @@ import CartDropdown from '../../Components/Cart-Dropdown/cart-dropdown';
 
 import { selectCurrentUser } from '../../Store/User/user.selector';
 import { selectIsCartOpen } from '../../Store/Cart/cart.selector';
-import { signOutStart } from '../../Store/User/user.action';
+// import { signOutStart } from '../../Store/User/user.action';
 
 import { ReactComponent as CrwnLogo } from '../../Assets/crown.svg';
 import { signOutUser } from '../../Utils/Firebase/firebase';

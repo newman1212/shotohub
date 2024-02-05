@@ -4,7 +4,7 @@ import {
   Title,
   Preview,
 } from './category-preview.styles';
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import ProductCard from '../Product-Card/product-card'
 
 

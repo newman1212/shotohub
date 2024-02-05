@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import CategoriesPreview from '../Categories-Preview/categories-preview';
 import Category from '../Category/category';
 import {getCategoriesAndDocuments} from '../../Utils/Firebase/firebase'
-import {setCategories} from '../../Store/Categories/category-action';
+import {setCategories} from '../../Store/Categories/category-reducer';
 
 const Shop = () => {
   const dispatch = useDispatch();
