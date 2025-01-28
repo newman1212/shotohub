@@ -1,19 +1,12 @@
 import { useState } from 'react';
-import { CardElement,
- useStripe,
-  useElements
- }
-
- from '@stripe/react-stripe-js';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useSelector } from 'react-redux';
 
 import { selectCartTotal } from '../../Store/Cart/cart.selector';
 import { selectCurrentUser } from '../../Store/User/user.selector';
 
-import { FormContainer } from './payment-form.styles';
+import { FormContainer, PaymentButton, PaymentFormContainer } from './payment-form.styles';
 import { BUTTON_TYPES_CLASSES } from '../Button/button';
-
-import { PaymentButton, PaymentFormContainer } from './payment-form.styles';
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -22,30 +15,18 @@ const PaymentForm = () => {
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
-
   const paymentHandler = async (e) => {
     e.preventDefault();
-    if (!stripe || !elements) {
-      return;
-    }
+    if (!stripe || !elements) return;
+
     setIsProcessingPayment(true);
     const response = await fetch('/.netlify/functions/create-payment-intent', {
       method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount: amount * 100 }),
-    }).then((res) => {
-      return res.json();
-    });
-
-
-    
-  
+    }).then((res) => res.json());
 
     const clientSecret = response.paymentIntent.client_secret;
-
-    // console.log(clientSecret, "clientSecret")
 
     const paymentResult = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
@@ -60,20 +41,14 @@ const PaymentForm = () => {
 
     if (paymentResult.error) {
       alert(paymentResult.error.message);
-    } else {
-      if (paymentResult.paymentIntent.status === 'succeeded') {
-        alert('Payment Successful!');
-      }
+    } else if (paymentResult.paymentIntent.status === 'succeeded') {
+      alert('Payment Successful!');
     }
   };
 
   return (
     <PaymentFormContainer>
-      <FormContainer 
-
-      onSubmit={paymentHandler}
-
-      >
+      <FormContainer onSubmit={paymentHandler}>
         <h2>Credit Card Payment:</h2>
         <CardElement />
         <PaymentButton
@@ -86,4 +61,5 @@ const PaymentForm = () => {
     </PaymentFormContainer>
   );
 };
+
 export default PaymentForm;

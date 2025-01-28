@@ -24,11 +24,35 @@ export const CartDropdownContainer = styled.div`
   ${InvertedButton} {
     margin-top: auto;
   }
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 300px;
+    right: 20px;
+    top: 80px;
+    padding: 15px;
+  }
+
+  @media (max-width: 480px) {
+    width: 160px;
+    height: 260px;
+    right: 10px;
+    top: 70px;
+    padding: 10px;
+  }
 `;
 
 export const EmptyMessage = styled.span`
   font-size: 18px;
   margin: 50px auto;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 export const CartItems = styled.div`
@@ -36,4 +60,12 @@ export const CartItems = styled.div`
   display: flex;
   flex-direction: column;
   overflow: scroll;
+
+  @media (max-width: 768px) {
+    height: 200px;
+  }
+
+  @media (max-width: 480px) {
+    height: 160px;
+  }
 `;

@@ -24,6 +24,20 @@ export const BaseButton = styled.button`
     color: black;
     border: 1px solid black;
   }
+
+  @media (max-width: 768px) {
+    min-width: 140px;
+    height: 45px;
+    font-size: 14px;
+    padding: 0 30px;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 120px;
+    height: 40px;
+    font-size: 12px;
+    padding: 0 25px;
+  }
 `;
 
 export const GoogleSignInButton = styled(BaseButton)`
@@ -33,6 +47,20 @@ export const GoogleSignInButton = styled(BaseButton)`
   &:hover {
     background-color: #357ae8;
     border: none;
+  }
+
+  @media (max-width: 768px) {
+    min-width: 140px;
+    height: 45px;
+    font-size: 14px;
+    padding: 0 30px;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 120px;
+    height: 40px;
+    font-size: 12px;
+    padding: 0 25px;
   }
 `;
 
@@ -46,6 +74,20 @@ export const InvertedButton = styled(BaseButton)`
     color: white;
     border: none;
   }
+
+  @media (max-width: 768px) {
+    min-width: 140px;
+    height: 45px;
+    font-size: 14px;
+    padding: 0 30px;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 120px;
+    height: 40px;
+    font-size: 12px;
+    padding: 0 25px;
+  }
 `;
 
 export const LoadingSpinner = styled.div`
@@ -57,14 +99,27 @@ export const LoadingSpinner = styled.div`
   border-top-color: #636767;
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
+
   @keyframes spin {
     to {
-      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
   @-webkit-keyframes spin {
     to {
       -webkit-transform: rotate(360deg);
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 25px;
+    height: 25px;
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 20px;
+    border-width: 1.5px;
   }
 `;
