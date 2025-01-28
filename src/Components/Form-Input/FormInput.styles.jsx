@@ -19,6 +19,10 @@ export const FormInputLabel = styled.label`
   top: 10px;
   transition: 300ms ease all;
   ${({ shrink }) => shrink && shrinkLabelStyles};
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const Input = styled.input`
@@ -41,6 +45,10 @@ export const Input = styled.input`
   &:focus ~ ${FormInputLabel} {
     ${shrinkLabelStyles};
   }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 export const Group = styled.div`
@@ -50,4 +58,9 @@ export const Group = styled.div`
   input[type='password'] {
     letter-spacing: 0.3em;
   }
+
+  @media (max-width: 768px) {
+    margin: 30px 0;
+  }
 `;
+
