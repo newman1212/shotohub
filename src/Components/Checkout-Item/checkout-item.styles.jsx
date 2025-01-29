@@ -16,6 +16,21 @@ export const CheckoutItemContainer = styled.div`
   }
 `;
 
+export const ControlButton = styled.button`
+  background-color: #f0f0f0;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #007bff;
+    color: white;
+  }
+`;
+
 export const ImageContainer = styled.div`
   width: 23%;
   padding-right: 15px;
@@ -68,4 +83,9 @@ export const RemoveButton = styled.div`
     font-size: 14px; /* Adjust font size on mobile */
   }
 `;
+
+
+
+
+
 

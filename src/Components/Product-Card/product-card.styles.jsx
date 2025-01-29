@@ -1,53 +1,69 @@
 import styled from 'styled-components';
 
-export const ProductCartContainer = styled.div`
+export const ProductCardContainer = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 350px;
-  align-items: center;
-  position: relative;
-
-  img {
-    width: 100%;
-    height: 95%;
-    object-fit: cover;
-    margin-bottom: 5px;
-  }
-
-  button {
-    width: 80%;
-    opacity: 0.7;
-    position: absolute;
-    top: 255px;
-    display: none;
-  }
+  max-width: 300px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
 
   &:hover {
-    img {
-      opacity: 0.8;
-    }
-
-    button {
-      opacity: 0.85;
-      display: flex;
-    }
+    transform: translateY(-5px);
   }
+`;
+
+export const ProductImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+`;
+
+export const ProductInfo = styled.div`
+  padding: 16px;
 `;
 
 export const Footer = styled.div`
-  width: 100%;
-  height: 5%;
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  margin-bottom: 12px;
 `;
 
-export const Name = styled.span`
-  width: 90%;
-  margin-bottom: 15px;
+export const Name = styled.h3`
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
 `;
 
 export const Price = styled.span`
-  width: 10%;
+  font-size: 1rem;
+  color: #007bff;
+`;
+
+export const QuantityControls = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+`;
+
+export const ControlButton = styled.button`
+  background-color: #f0f0f0;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #007bff;
+    color: white;
+  }
+`;
+
+export const QuantityDisplay = styled.span`
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
 `;
