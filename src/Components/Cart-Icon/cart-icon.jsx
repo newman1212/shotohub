@@ -11,12 +11,16 @@ import { ReactComponent as ShoppingIcon } from '../../Assets/shopping-bag.svg';
 
 import { CartIconContainer, ItemCount } from './cart-icon.styles';
 
-const CartIcon = () => {
+const CartIcon = ({closeMenu}) => {
   const dispatch = useDispatch();
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartCount = useSelector(selectCartCount);
 
-  const toggleIsCartOpen = () => dispatch(setIsCartOpen(!isCartOpen));
+  const toggleIsCartOpen = () =>{
+    dispatch(setIsCartOpen(!isCartOpen));
+    if (closeMenu) closeMenu();
+
+  } 
 
   return (
     <CartIconContainer onClick={toggleIsCartOpen}>

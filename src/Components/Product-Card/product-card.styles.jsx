@@ -16,28 +16,28 @@ export const ProductCardContainer = styled.div`
 
 export const ProductImage = styled.img`
   width: 100%;
-  height: 200px;
+  height: 250px;  // Increased image height
   object-fit: cover;
 `;
 
 export const ProductInfo = styled.div`
-  padding: 16px;
+  padding: 12px; // Reduced padding to make space for the image
 `;
 
 export const Footer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 8px; // Reduced margin to save space
 `;
 
 export const Name = styled.h3`
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #333;
 `;
 
 export const Price = styled.span`
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #007bff;
 `;
 
@@ -51,7 +51,7 @@ export const QuantityControls = styled.div`
 export const ControlButton = styled.button`
   background-color: #f0f0f0;
   border: none;
-  padding: 8px;
+  padding: 6px;  // Reduced padding for a sleeker look
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -63,7 +63,7 @@ export const ControlButton = styled.button`
 `;
 
 export const QuantityDisplay = styled.span`
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: bold;
   color: #333;
 `;

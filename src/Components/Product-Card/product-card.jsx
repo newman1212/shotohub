@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart, removeItemFromCart } from '../../Store/Cart/cart.reducer';
 import Button, { BUTTON_TYPES_CLASSES } from '../Button/button';
-// import { Plus, Minus } from 'lucide-react'; // Importing icons for buttons
+import { FiPlus, FiMinus } from 'react-icons/fi';  // Importing react-icons
 
 import {
   ProductCardContainer,
@@ -43,14 +43,19 @@ const ProductCard = ({ product }) => {
             buttonType={BUTTON_TYPES_CLASSES.inverted}
             onClick={addProductToCart}
             fullWidth
+            style={{ padding: '6px 10px', fontSize: '14px' }} // Adjusted button size
           >
             Add to Cart
           </Button>
         ) : (
           <QuantityControls>
-            <ControlButton onClick={removeProductFromCart}>-</ControlButton>
+            <ControlButton onClick={removeProductFromCart}>
+              <FiMinus /> {/* Minus icon */}
+            </ControlButton>
             <QuantityDisplay>{quantity}</QuantityDisplay>
-            <ControlButton onClick={addProductToCart}>+</ControlButton>
+            <ControlButton onClick={addProductToCart}>
+              <FiPlus /> {/* Plus icon */}
+            </ControlButton>
           </QuantityControls>
         )}
       </ProductInfo>
