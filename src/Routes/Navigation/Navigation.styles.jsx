@@ -5,7 +5,7 @@ import { FiMenu, FiX } from 'react-icons/fi';
 export const NavigationContainer = styled.div`
   position: sticky;
   top: 0;
-  width: 100%;
+  width: 100vw;  /* Ensures full width */
   height: 70px;
   display: flex;
   justify-content: space-between;
@@ -70,7 +70,7 @@ export const SearchInput = styled.input`
   }
 `;
 
-/* Smaller mobile menu that slides in */
+/* Mobile menu - slides in from right */
 export const NavLinks = styled.div`
   display: flex;
   align-items: center;
@@ -81,11 +81,11 @@ export const NavLinks = styled.div`
     flex-direction: column;
     position: fixed;
     top: 0;
-    right: ${({ isOpen }) => (isOpen ? '0' : '-50%')}; /* Shrinks width */
-    width: 50%;  /* Now half the screen */
+    right: ${({ isOpen }) => (isOpen ? '0' : '-60%')}; /* Slides in */
+    width: 60%;  /* Adjusted width for a smaller size */
     height: 100vh;
     background: white;
-    padding-top: 60px;
+    padding-top: 80px; /* Space for navbar */
     box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease-in-out;
     z-index: 999;
