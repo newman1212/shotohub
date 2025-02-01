@@ -1,18 +1,17 @@
 import { useSelector } from 'react-redux';
-
-import {
-  selectCartItems,
-  selectCartTotal,
-} from '../../Store/Cart/cart.selector';
+import { selectCartItems, selectCartTotal } from '../../Store/Cart/cart.selector';
 
 import CheckoutItem from '../../Components/Checkout-Item/checkout-item';
-import PaymentForm from '../../Components/payment-form/payment-form' 
+import PaymentForm from '../../Components/payment-form/payment-form';
 
 import {
   CheckoutContainer,
-  CheckoutHeader,
-  HeaderBlock,
+  // CheckoutHeader,
+  // HeaderBlock,
   Total,
+  PaymentWrapper,
+  MobileCheckoutItem,
+  MobileRow
 } from './checkout.styles';
 
 const Checkout = () => {
@@ -21,29 +20,36 @@ const Checkout = () => {
 
   return (
     <CheckoutContainer>
-      <CheckoutHeader>
-        <HeaderBlock>
-          <span>Product</span>
-        </HeaderBlock>
-        <HeaderBlock>
-          <span>Description</span>
-        </HeaderBlock>
-        <HeaderBlock>
-          <span>Quantity</span>
-        </HeaderBlock>
-        <HeaderBlock>
-          <span>Price</span>
-        </HeaderBlock>
-        <HeaderBlock>
-          <span>Remove</span>
-        </HeaderBlock>
-      </CheckoutHeader>
-      {cartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-      ))}
-      <Total>Total: ${cartTotal}</Total>
+      {/* Desktop Header */}
+      {/* <CheckoutHeader>
+        <HeaderBlock><span>Product</span></HeaderBlock>
+        <HeaderBlock><span>Description</span></HeaderBlock>
+        <HeaderBlock><span>Quantity</span></HeaderBlock>
+        <HeaderBlock><span>Price</span></HeaderBlock>
+        <HeaderBlock><span>Remove</span></HeaderBlock>
+      </CheckoutHeader> */}
 
-      <PaymentForm/>
+      {/* Checkout Items */}
+      {cartItems.map((cartItem) => (
+        <>
+          {/* Desktop View */}
+          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+
+          {/* Mobile View */}
+          <MobileCheckoutItem key={`mobile-${cartItem.id}`}>
+            <MobileRow><strong>Product:</strong> {cartItem.name}</MobileRow>
+            <MobileRow><strong>Qty:</strong> {cartItem.quantity}</MobileRow>
+            <MobileRow><strong>Price:</strong> ${cartItem.price}</MobileRow>
+          
+          </MobileCheckoutItem>
+        </>
+      ))}
+
+      {/* Total & Payment */}
+      <Total>Total: ${cartTotal}</Total>
+      <PaymentWrapper>
+        <PaymentForm />
+      </PaymentWrapper>
     </CheckoutContainer>
   );
 };

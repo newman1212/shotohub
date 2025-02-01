@@ -5,15 +5,18 @@ import { FiMenu, FiX } from 'react-icons/fi';
 export const NavigationContainer = styled.div`
   position: sticky;
   top: 0;
-  width: 100vw;  /* Ensures full width */
+  left: 0;
+  width: 100%;
+  max-width: 100vw; /* Prevents stretching */
   height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 0 20px;
+  padding: 0 5px;
   z-index: 1000;
+  box-sizing: border-box; /* Ensures padding doesn’t add extra width */
 
   @media screen and (max-width: 768px) {
     padding: 0 16px;
@@ -26,7 +29,6 @@ export const LogoContainer = styled(Link)`
   align-items: center;
   font-size: 1.8rem;
   font-weight: bold;
-  color: black;
   text-decoration: none;
   letter-spacing: 1px;
 
@@ -77,15 +79,14 @@ export const NavLinks = styled.div`
   gap: 20px;
 
   @media screen and (max-width: 768px) {
-    display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
-    right: ${({ isOpen }) => (isOpen ? '0' : '-60%')}; /* Slides in */
-    width: 60%;  /* Adjusted width for a smaller size */
+    right: ${({ isOpen }) => (isOpen ? '0' : '-100%')}; /* Fully hidden when closed */
+    width: 60%;
     height: 100vh;
     background: white;
-    padding-top: 80px; /* Space for navbar */
+    padding-top: 80px;
     box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease-in-out;
     z-index: 999;
@@ -110,6 +111,18 @@ export const NavLink = styled(Link)`
     width: 100%;
     text-align: center;
   }
+`;
+
+/* Menu Overlay */
+export const MenuOverlay = styled.div`
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
 `;
 
 export const HamburgerIcon = styled(FiMenu)`

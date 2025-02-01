@@ -19,49 +19,38 @@ import {
   SearchInput,
   HamburgerIcon,
   CloseIcon,
+  MenuOverlay,
 } from './Navigation.styles';
 
 const Navigation = () => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
 
-  const menuRef = useRef(null);
-  const cartRef = useRef(null);
-
-  const handleClickOutside = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setMenuOpen(false);
-    }
-    if (cartRef.current && !cartRef.current.contains(event.target)) {
-      // Close cart dropdown if user clicks outside
-    }
-  };
-
+  // Close menu when clicking outside
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuOpen && !event.target.closest('.nav-menu')) {
+        setMenuOpen(false);
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [menuOpen]);
 
   return (
     <Fragment>
       <NavigationContainer>
-      <LogoContainer to='/'>
-  <span style={{ color: '#333333', fontWeight: 'bold' }}>Shoto</span>
-  <span style={{ color: '#aaaaaa', fontWeight: 'bold' }}>Hub</span>
-</LogoContainer>
-
+        <LogoContainer to='/'>
+          <span style={{ color: '#333333', fontWeight: 'bold' }}>Shoto</span>
+          <span style={{ color: '#aaaaaa', fontWeight: 'bold' }}>Hub</span>
+        </LogoContainer>
 
         <SearchBarContainer>
-          <SearchInput 
-            type='text' 
-            placeholder='Search products...' 
-            value={searchQuery} 
-            onChange={(e) => setSearchQuery(e.target.value)} 
-          />
+          <SearchInput type='text' placeholder='Search products...' />
         </SearchBarContainer>
 
         {/* Hamburger Menu */}
@@ -71,7 +60,9 @@ const Navigation = () => {
           <HamburgerIcon onClick={() => setMenuOpen(true)} />
         )}
 
-        <NavLinks ref={menuRef} isOpen={menuOpen}>
+        <MenuOverlay isOpen={menuOpen} onClick={() => setMenuOpen(false)} />
+
+        <NavLinks className="nav-menu" isOpen={menuOpen}>
           <NavLink to='/shop' onClick={() => setMenuOpen(false)}>SHOP</NavLink>
           <NavLink to='/contact' onClick={() => setMenuOpen(false)}>CONTACT</NavLink>
           {currentUser ? (
@@ -82,7 +73,7 @@ const Navigation = () => {
           <CartIcon closeMenu={() => setMenuOpen(false)} />
         </NavLinks>
 
-        {isCartOpen && <CartDropdown ref={cartRef} />}
+        {isCartOpen && <CartDropdown />}
       </NavigationContainer>
       <Outlet />
     </Fragment>
