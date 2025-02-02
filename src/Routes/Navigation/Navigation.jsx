@@ -1,4 +1,6 @@
-import { Fragment, useState, useRef, useEffect } from 'react';
+import { Fragment, useState,
+  //  useRef,
+    useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -9,6 +11,7 @@ import { selectCurrentUser } from '../../Store/User/user.selector';
 import { selectIsCartOpen } from '../../Store/Cart/cart.selector';
 
 import { signOutUser } from '../../Utils/Firebase/firebase';
+import Footer from '../../Components/Footer/footer';
 
 import {
   NavigationContainer,
@@ -76,6 +79,7 @@ const Navigation = () => {
         {isCartOpen && <CartDropdown />}
       </NavigationContainer>
       <Outlet />
+      <Footer/>
     </Fragment>
   );
 };

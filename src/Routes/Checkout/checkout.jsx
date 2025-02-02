@@ -10,8 +10,8 @@ import {
   // HeaderBlock,
   Total,
   PaymentWrapper,
-  MobileCheckoutItem,
-  MobileRow
+  // MobileCheckoutItem,
+  // MobileRow
 } from './checkout.styles';
 
 const Checkout = () => {
@@ -36,12 +36,12 @@ const Checkout = () => {
           <CheckoutItem key={cartItem.id} cartItem={cartItem} />
 
           {/* Mobile View */}
-          <MobileCheckoutItem key={`mobile-${cartItem.id}`}>
+          {/* <MobileCheckoutItem key={`mobile-${cartItem.id}`}>
             <MobileRow><strong>Product:</strong> {cartItem.name}</MobileRow>
             <MobileRow><strong>Qty:</strong> {cartItem.quantity}</MobileRow>
             <MobileRow><strong>Price:</strong> ${cartItem.price}</MobileRow>
           
-          </MobileCheckoutItem>
+          </MobileCheckoutItem> */}
         </>
       ))}
 
